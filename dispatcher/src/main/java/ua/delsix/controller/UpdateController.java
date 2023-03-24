@@ -1,12 +1,12 @@
 package ua.delsix.controller;
 
-import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 @Controller
-@Log4j
+@Log4j2
 public class UpdateController {
     private TelegramBot telegramBot;
 
