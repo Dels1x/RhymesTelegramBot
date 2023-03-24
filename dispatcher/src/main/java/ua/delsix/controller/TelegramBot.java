@@ -8,14 +8,27 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import javax.annotation.PostConstruct;
+
 @Component
 @Log4j
 public class TelegramBot extends TelegramLongPollingBot {
+    private final UpdateController updateController;
     @Value("${bot.name}")
     private String botName;
 
     @Value("${bot.token}")
     private String botToken;
+
+    public TelegramBot(UpdateController updateController) {
+        this.updateController = updateController;
+    }
+
+    // Registers TelegramBot in UpdateController
+    @PostConstruct
+    private void registrateBotInUpdateController() {
+        updateController.registerBot(this);
+    }
 
 
     @Override
@@ -30,15 +43,8 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        var message = update.getMessage();
-        String text = message.getText();
-        Long chatId = message.getChatId();
-
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setText(text);
-        sendMessage.setChatId(chatId);
-
-        sendMessage(sendMessage);
+        log.debug("Update received. Message: "+update);
+        updateController.processUpdate(update);
     }
 
     public void sendMessage(SendMessage message) {
@@ -49,8 +55,8 @@ public class TelegramBot extends TelegramLongPollingBot {
             } catch (TelegramApiException e) {
                 log.error(e);
             }
-
-            // test
         }
     }
+
+
 }
