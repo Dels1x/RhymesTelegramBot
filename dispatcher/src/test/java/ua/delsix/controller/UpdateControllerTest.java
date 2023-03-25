@@ -12,7 +12,7 @@ import java.io.IOException;
 class UpdateControllerTest {
     private final OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL = "https://api.datamuse.com";
-    private static String word = "corn";
+    private static String word = "dick";
 
     @Test
     public void whenGetRequest_thenCorrect() throws IOException{
