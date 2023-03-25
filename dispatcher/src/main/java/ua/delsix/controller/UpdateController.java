@@ -17,8 +17,13 @@ public class UpdateController {
     public void processUpdate(Update update) {
         try {
             var message = update.getMessage();
+            String text = message.getText();
             if (message != null) {
-                if (message.getText().matches("^[a-zA-Z]+$")) {
+                if (text.matches("^[a-zA-Z]+$")) {
+                    // Get last word from a string, in case if user wrote multiple, to give a rhyme for the last word
+                    String lastWord = text.split(" ")[text.split(" ").length - 1];
+
+
                     SendMessage sendMessage = new SendMessage();
                     sendMessage.setChatId(message.getChatId());
                     sendMessage.setText(
