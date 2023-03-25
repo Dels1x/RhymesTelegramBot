@@ -45,7 +45,7 @@ public class DatamuseServiceImpl implements DatamuseService {
         Response response = call.execute();
 
         if (response.code() == 200) {
-            ResponseBody responseBody = response.body();
+            String responseBody = response.body().string();
             JSONArray wordsJSON = new JSONArray(responseBody);
 
             for(int i = 0; i < wordsJSON.length(); i++) {
