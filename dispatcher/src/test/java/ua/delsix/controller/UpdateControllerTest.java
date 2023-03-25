@@ -18,7 +18,7 @@ class UpdateControllerTest {
     @Test
     public void whenGetRequest_thenCorrect() throws IOException {
         Request request = new Request.Builder()
-                .url(BASE_URL + "/date")
+                .url(BASE_URL + "/words?rel_why=funny")
                 .build();
 
         Call call = client.newCall(request);
