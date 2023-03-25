@@ -10,18 +10,26 @@ import java.util.List;
 
 public class DatamuseServiceImpl implements DatamuseService {
     private static final String BASE_URL = "https://api.datamuse.com";
-    private static final String PERFECT_RHYMES_RELATION = "rel_rhy";
-    private static final String NEAR_RHYMES_RELATION = "rel_nry";
+    private static final String PERFECT_RHYMES_RELATION = "words?rel_rhy";
+    private static final String NEAR_RHYMES_RELATION = "words?rel_nry";
     private static final OkHttpClient client = new OkHttpClient();
 
     @Override
     public List<String> getPerfectRhymes(String word) throws IOException, JSONException {
-        return null;
+        Request request = new Request.Builder()
+                .url(String.format("%s/%s=%s", BASE_URL, PERFECT_RHYMES_RELATION, word))
+                .build();
+
+        return executeRequest(request);
     }
 
     @Override
     public List<String> getNearRhymes(String word) throws IOException, JSONException {
-        return null;
+        Request request = new Request.Builder()
+                .url(String.format("%s/%s=%s", BASE_URL, NEAR_RHYMES_RELATION, word))
+                .build();
+
+        return executeRequest(request);
     }
 
     @Override
