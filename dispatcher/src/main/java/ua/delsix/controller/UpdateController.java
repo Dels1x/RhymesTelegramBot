@@ -35,6 +35,8 @@ public class UpdateController {
                     sendMessage.setText("Hello there! This bot will help you find rhymes to a word you want.\n" +
                             "Just type in the word, and the bot will find rhymes for you.\n\nNotice that it doesn't work " +
                             "with words that don't exist in an actual English dictionary.");
+
+                    //Checking if message consists only of latin letters
                 } else if (text.matches("^[a-zA-Z]+$")) {
                     // Get last word from a string, in case if user wrote multiple, to give a rhyme for the last word
                     String lastWord = text.split(" ")[text.split(" ").length - 1];
