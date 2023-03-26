@@ -11,6 +11,7 @@
   <url>http://maven.apache.org</url>
   <modules>
     <module>dispatcher</module>
+      <module>common-rabbitmq</module>
   </modules>
 
   <properties>

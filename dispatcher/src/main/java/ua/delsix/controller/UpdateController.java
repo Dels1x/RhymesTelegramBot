@@ -27,10 +27,10 @@ public class UpdateController {
         try {
             var message = update.getMessage();
             String text = message.getText();
-            if (message != null) {
-                SendMessage sendMessage = new SendMessage();
-                sendMessage.setChatId(message.getChatId());
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setChatId(message.getChatId());
 
+            if (message.getText() != null) {
                 if(text.equals("/start")) {
                     sendMessage.setText("Hello there! This bot will help you find rhymes to a word you want.\n" +
                             "Just type in the word, and the bot will find rhymes for you.\n\nNotice that it doesn't work " +
@@ -55,10 +55,12 @@ public class UpdateController {
                 } else {
                     sendMessage.setText("Your message must consist only of latin letters and nothing else.");
                 }
-                telegramBot.sendMessage(sendMessage);
-                log.debug(String.format("UpdateController - processUpdate: message \"%s\"" +
-                        " sent to TelegramBot - sendMessage()", sendMessage.getText()));
+            } else {
+                sendMessage.setText("Send an actual message with text.");
             }
+            telegramBot.sendMessage(sendMessage);
+            log.debug(String.format("UpdateController - processUpdate: message \"%s\"" +
+                    " sent to TelegramBot - sendMessage()", sendMessage.getText()));
 
         } catch (Exception e) {
             log.error("Error in UpdateController - processUpdate()", e);
