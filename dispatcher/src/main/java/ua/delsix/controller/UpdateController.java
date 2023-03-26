@@ -60,7 +60,7 @@ public class UpdateController {
 
     }
 
-    public String findRhymes(String text) throws IOException {
+    private String findRhymes(String text) throws IOException {
         // Get last word from a string, in case if user wrote multiple, to give a rhyme for the last word
         String lastWord = text.split(" ")[text.split(" ").length - 1];
 
