@@ -1,9 +1,8 @@
 package ua.delsix.controller;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ua.delsix.service.impl.DatamuseServiceImpl;
 import ua.delsix.utils.MessageUtils;
@@ -12,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@Log4j2
+@Log4j
 public class UpdateController {
     private TelegramBot telegramBot;
     private final DatamuseServiceImpl datamuseService;
@@ -40,7 +39,7 @@ public class UpdateController {
                             "with words that don't exist in an actual English dictionary.";
 
                     //Checking if message consists only of latin letters
-                } else if (text.matches("^[a-zA-Z]+$")) {
+                } else if (text.matches("^[a-zA-Z ]+$")) {
                     answer = findRhymes(text);
                 } else {
                     answer = "Your message must consist only of latin letters and nothing else.";

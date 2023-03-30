@@ -1,6 +1,6 @@
 package ua.delsix.service.impl;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.log4j.Log4j;
 import okhttp3.*;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Log4j2
+@Log4j
 public class DatamuseServiceImpl implements DatamuseService {
     private static final String BASE_URL = "https://api.datamuse.com";
     private static final String PERFECT_RHYMES_RELATION = "words?rel_rhy";
@@ -57,7 +57,7 @@ public class DatamuseServiceImpl implements DatamuseService {
 
 
         } else {
-           log.error("Response code: {}", response.code());
+           log.error("Response code: "+ response.code());
         }
 
         return words;
