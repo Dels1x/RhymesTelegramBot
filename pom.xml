@@ -12,10 +12,14 @@
   <modules>
     <module>dispatcher</module>
       <module>common-rabbitmq</module>
+    <module>node</module>
   </modules>
 
   <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <telegrambots.version>6.1.0</telegrambots.version>
   </properties>
 
   <parent>
@@ -48,21 +52,11 @@
       <scope>provided</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
     <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-    <exclusions>
-      <exclusion>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-logging</artifactId>
-      </exclusion>
-    </exclusions>
-  </dependency>
-  <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-log4j2</artifactId>
-  </dependency>
-
-
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
   </dependencies>
 </project>
