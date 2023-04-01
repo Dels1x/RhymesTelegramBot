@@ -5,10 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ua.delsix.service.UpdateProducer;
-import ua.delsix.utils.MessageUtils;
-
-import java.io.IOException;
-import java.util.List;
 
 import static ua.delsix.RabbitQueue.MESSAGE_UPDATE;
 
@@ -16,11 +12,9 @@ import static ua.delsix.RabbitQueue.MESSAGE_UPDATE;
 @Log4j
 public class UpdateController {
     private TelegramBot telegramBot;
-    private final MessageUtils messageUtils;
     private final UpdateProducer updateProducer;
 
-    public UpdateController(MessageUtils messageUtils, UpdateProducer updateProducer) {
-        this.messageUtils = messageUtils;
+    public UpdateController(UpdateProducer updateProducer) {
         this.updateProducer = updateProducer;
     }
 
