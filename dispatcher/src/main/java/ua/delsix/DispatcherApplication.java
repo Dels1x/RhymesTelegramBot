@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Log4j
 public class DispatcherApplication {
     public static void main(String[] args) {
-        System.out.println("hello world 1");
-        log.debug("helo world 2");
         SpringApplication.run(DispatcherApplication.class);
     }
 }
